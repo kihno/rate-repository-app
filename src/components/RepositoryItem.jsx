@@ -1,5 +1,6 @@
 import { View, Image, StyleSheet } from "react-native";
 import Text from "./Text";
+import Counter from "./Counter";
 
 const RepositoryItem = ({ item }) => {
   const styles = StyleSheet.create({
@@ -63,22 +64,10 @@ const RepositoryItem = ({ item }) => {
         </View>
       </View>
       <View style={styles.flexContainer}>
-        <View style={styles.flexItem}>
-          <Text fontWeight="bold" fontSize="subheading" color="textPrimary">{round(item.stargazersCount)}</Text>
-          <Text color="textSecondary">Stars</Text>
-        </View>
-        <View style={styles.flexItem}>
-          <Text fontWeight="bold" fontSize="subheading" color="textPrimary">{round(item.forksCount)}</Text>
-          <Text color="textSecondary">Forks</Text>
-        </View>
-        <View style={styles.flexItem}>
-          <Text fontWeight="bold" fontSize="subheading" color="textPrimary">{round(item.reviewCount)}</Text>
-          <Text color="textSecondary">Reviews</Text>
-        </View>
-        <View style={styles.flexItem}>
-          <Text fontWeight="bold" fontSize="subheading" color="textPrimary">{round(item.ratingAverage)}</Text>
-          <Text color="textSecondary">Rating</Text>
-        </View>
+        <Counter title="Stars" count={item.stargazersCount} />
+        <Counter title="Forks" count={item.forksCount} />
+        <Counter title="Reviews" count={item.reviewCount} />
+        <Counter title="Rating" count={item.ratingAverage} />
       </View>
     </View>
   )

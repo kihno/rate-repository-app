@@ -45,7 +45,7 @@ const repositories = [
   {
     id: 'reduxjs.redux',
     fullName: 'reduxjs/redux',
-    description: 'Predictable state container for JavaScript apps',
+    description: 'Predictable state container for JavaScript applications.',
     language: 'TypeScript',
     forksCount: 13902,
     stargazersCount: 52869,
