@@ -42,17 +42,8 @@ const RepositoryItem = ({ item }) => {
     }
   });
 
-  const round = (number) => {
-    if (number < 1000) {
-      return number;
-    } else {
-      const rounded = Math.round((number/1000) * 10) / 10
-      return `${rounded}k`
-    }
-  }
-
   return (
-    <View style={styles.cardContainer}>
+    <View testID="repositoryItem" style={styles.cardContainer}>
       <View style={styles.flexContainer}>
         <Image style={styles.logo} source={{ uri: item.ownerAvatarUrl }} />
         <View style={styles.nameCard}>
