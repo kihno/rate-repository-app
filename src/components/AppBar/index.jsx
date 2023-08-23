@@ -2,7 +2,11 @@ import { View, StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
 import AppBarTab from './AppBarTab';
 import { ScrollView } from 'react-native';
-import theme from '../theme';
+import theme from '../../theme';
+import { useQuery } from '@apollo/client';
+import { GET_ME } from '../../graphql/queries';
+import SignOut from './SignOut';
+import { useEffect, useState } from 'react';
 
 
 const styles = StyleSheet.create({
@@ -16,10 +20,22 @@ const styles = StyleSheet.create({
 });
 
 const AppBar = () => {
+  const [user, setUser] = useState(null);
+  const { data } = useQuery(GET_ME);
+
+  useEffect(() => {
+    if (data) {
+      setUser(data);
+    }
+  }, [data])
+
   return (
     <View style={styles.container}>
         <AppBarTab title="Repositories" link="/" />
-        <AppBarTab title="Sign In" link="/signin" />
+        { user
+          ? <SignOut setUser={setUser} />
+          : <AppBarTab title="Sign In" link="/signin" />
+        }
     </View>
   );
 };
