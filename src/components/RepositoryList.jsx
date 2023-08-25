@@ -16,6 +16,7 @@ export const RepositoryListContainer = ({ repositories }) => {
 
   return (
     <FlatList
+      style={{backgroundColor: '#fff'}}
       data={repositoryNodes}
       ItemSeparatorComponent={ItemSeparator}
       renderItem={({item}) => 

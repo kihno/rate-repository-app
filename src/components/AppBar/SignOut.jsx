@@ -18,7 +18,7 @@ const SignOut = ({ setUser }) => {
 
   return (
     <Pressable style={{ paddingTop: 20, paddingBottom: 20 }} onPress={signOut}>
-      <Text fontWeight="bold" color="textHeading" fontSize="heading">Sign Out</Text>
+      <Text fontWeight="bold" color="textHeading" fontSize="subheading">Sign Out</Text>
     </Pressable>
   )
 };

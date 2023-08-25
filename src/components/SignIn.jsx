@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'space-evenly',
     padding: 15,
-    backgroundColor: theme.colors.secondaryBackground,
+    backgroundColor: "#fff",
   },
   button: {
     backgroundColor: theme.colors.primary,

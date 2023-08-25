@@ -15,7 +15,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: 20,
     backgroundColor: theme.colors.headerBackground,
-    padding: 20
+    paddingBottom: 10,
+    paddingRight: 20,
+    paddingLeft: 20
   },
 });
 
@@ -25,17 +27,28 @@ const AppBar = () => {
 
   useEffect(() => {
     if (data) {
-      setUser(data);
+      setUser(data.me);
     }
-  }, [data])
+  }, [data]);
+
+  const UserTabs = () => {
+    return (
+      <>
+        <AppBarTab title="Create a review" link="/review" />
+        <SignOut setUser={setUser} />
+      </>
+    )
+  };
 
   return (
-    <View style={styles.container}>
+    <View style={{paddingTop: 10, backgroundColor: theme.colors.headerBackground}}>
+      <View style={styles.container}>
         <AppBarTab title="Repositories" link="/" />
         { user
-          ? <SignOut setUser={setUser} />
+          ? <UserTabs />
           : <AppBarTab title="Sign In" link="/signin" />
         }
+      </View>
     </View>
   );
 };

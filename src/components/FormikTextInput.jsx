@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 5,
     padding: 10,
+    color: theme.colors.textSecondary,
     borderColor: theme.colors.textSecondary,
     marginBottom: 15
   },
@@ -21,6 +22,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 5,
     padding: 10,
+    color: theme.colors.textSecondary,
     borderColor: theme.colors.error,
     marginBottom: 5
   }

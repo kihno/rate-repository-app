@@ -16,15 +16,18 @@ const RepositoryItem = ({ item, singlePage }) => {
     },
     cardContainer: {
       padding: 20,
+      backgroundColor: '#fffff'
     },
     flexItem: {
       flexGrow: 1,
       margin: 10,
       gap: 5,
-      alignItems: "center"
+      alignItems: "center",
     },
     textMargin: {
       margin: 5,
+      flex: 1,
+      flexWrap: 'wrap'
     },
     language: {
       paddingLeft: 3,
@@ -45,7 +48,9 @@ const RepositoryItem = ({ item, singlePage }) => {
     nameCard: {
       marginLeft: 15,
       display: "flex",
-      alignItems: "flex-start"
+      alignItems: "flex-start",
+      flex: 1,
+      flexWrap: 'wrap'
     }
   });
 

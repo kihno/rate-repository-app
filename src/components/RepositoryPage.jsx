@@ -87,6 +87,7 @@ const RepositoryPage = () => {
 
   return (
     <FlatList
+      style={{backgroundColor: '#fff'}}
       data={reviews}
       ItemSeparatorComponent={ItemSeparator}
       renderItem={({ item }) => <ReviewItem review={item} />}
