@@ -1,7 +1,7 @@
-import { FlatList, View, StyleSheet } from 'react-native';
-import { useEffect, useState } from 'react';
+import { FlatList, View, StyleSheet, Pressable } from 'react-native';
 import useRepositories from '../hooks/useRepositories';
 import RepositoryItem from './RepositoryItem';
+import { useNavigate } from 'react-router-native';
 
 const styles = StyleSheet.create({
   separator: {
@@ -17,11 +17,20 @@ export const RepositoryListContainer = ({ repositories }) => {
     ? repositories.edges.map((edge) => edge.node)
     : [];
 
+  const navigate = useNavigate();
+  const handlePress = (id) => {
+    navigate(`/${id}`);
+  };
+
   return (
     <FlatList
       data={repositoryNodes}
       temSeparatorComponent={ItemSeparator}
-      renderItem={({item}) => <RepositoryItem item={item} />}
+      renderItem={({item}) => 
+        <Pressable onPress={() => handlePress(item.id)}>
+          <RepositoryItem item={item} singlePage={false} />
+        </Pressable>
+      }
       keyExtractor={item => item.id}
     />
   );

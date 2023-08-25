@@ -1,8 +1,9 @@
-import { View, Image, StyleSheet } from "react-native";
+import { View, Image, StyleSheet, Pressable } from "react-native";
+import * as Linking from 'expo-linking';
 import Text from "./Text";
 import Counter from "./Counter";
 
-const RepositoryItem = ({ item }) => {
+const RepositoryItem = ({ item, singlePage }) => {
   const styles = StyleSheet.create({
     logo: {
       width: 50,
@@ -35,6 +36,12 @@ const RepositoryItem = ({ item }) => {
       marginBottom: 5,
       marginLeft: 3
     },
+    button: {
+      backgroundColor: "#0366d6",
+      textAlign: 'center',
+      padding: 10,
+      borderRadius: 5,
+    },
     nameCard: {
       marginLeft: 15,
       display: "flex",
@@ -50,7 +57,7 @@ const RepositoryItem = ({ item }) => {
           <Text fontWeight="bold" fontSize="subheading" color="textPrimary" style={styles.textMargin}>{item.fullName}</Text>
           <Text color="textSecondary" style={styles.textMargin}>{item.description}</Text>
           <View style={styles.language}>
-            <Text color="textHeading"style={styles.language}>{item.language}</Text>
+            <Text color="textHeading" style={styles.language}>{item.language}</Text>
           </View>
         </View>
       </View>
@@ -60,6 +67,11 @@ const RepositoryItem = ({ item }) => {
         <Counter title="Reviews" count={item.reviewCount} />
         <Counter title="Rating" count={item.ratingAverage} />
       </View>
+      {singlePage &&
+        <Pressable style={styles.button} onPress={() => Linking.openURL(item.url)}>
+          <Text color="textHeading" fontWeight='bold'>Open in GitHub</Text>
+        </Pressable>
+      }
     </View>
   )
 };
