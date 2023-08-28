@@ -40,13 +40,22 @@ const AppBar = () => {
     )
   };
 
+  const VisitorTabs = () => {
+    return (
+      <>
+        <AppBarTab title="Sign In" link="/signin" />
+        <AppBarTab title="Sign Up" link="/signup" />
+      </>
+    )
+  }
+
   return (
     <View style={{paddingTop: 10, backgroundColor: theme.colors.headerBackground}}>
       <View style={styles.container}>
         <AppBarTab title="Repositories" link="/" />
         { user
           ? <UserTabs />
-          : <AppBarTab title="Sign In" link="/signin" />
+          : <VisitorTabs />
         }
       </View>
     </View>
