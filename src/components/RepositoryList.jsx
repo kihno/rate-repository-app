@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
   },
   searchbar: {
     padding: 10,
+    marginBottom: 10,
     color: theme.colors.textSecondary,
     backgroundColor: '#ffffff',
     borderRadius: 5

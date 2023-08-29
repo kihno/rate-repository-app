@@ -4,7 +4,7 @@ import AppBarTab from './AppBarTab';
 import { ScrollView } from 'react-native';
 import theme from '../../theme';
 import { useQuery } from '@apollo/client';
-import { GET_ME } from '../../graphql/queries';
+import { GET_CURRENT_USER, GET_ME } from '../../graphql/queries';
 import SignOut from './SignOut';
 import { useEffect, useState } from 'react';
 
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
 
 const AppBar = () => {
   const [user, setUser] = useState(null);
-  const { data } = useQuery(GET_ME);
+  const { data } = useQuery(GET_CURRENT_USER);
 
   useEffect(() => {
     if (data) {
@@ -35,6 +35,7 @@ const AppBar = () => {
     return (
       <>
         <AppBarTab title="Create a review" link="/review" />
+        <AppBarTab title="My reviews" link="/myreviews" />
         <SignOut setUser={setUser} />
       </>
     )
@@ -51,13 +52,13 @@ const AppBar = () => {
 
   return (
     <View style={{paddingTop: 10, backgroundColor: theme.colors.headerBackground}}>
-      <View style={styles.container}>
+      <ScrollView horizontal style={styles.container}>
         <AppBarTab title="Repositories" link="/" />
         { user
           ? <UserTabs />
           : <VisitorTabs />
         }
-      </View>
+      </ScrollView>
     </View>
   );
 };
