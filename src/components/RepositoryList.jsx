@@ -23,7 +23,6 @@ const styles = StyleSheet.create({
   },
   searchbar: {
     padding: 10,
-    marginBottom: 10,
     color: theme.colors.textSecondary,
     backgroundColor: '#ffffff',
     borderRadius: 5
@@ -88,43 +87,7 @@ export class RepositoryListContainer extends React.Component {
     />
     );
   }
-}
-
-// export const RepositoryListContainer = ({ repositories, sort, setSort, search, setSearch }) => {
-//   const repositoryNodes = repositories
-//     ? repositories.edges.map((edge) => edge.node)
-//     : [];
-
-//   const navigate = useNavigate();
-//   const handlePress = (id) => {
-//     navigate(`/${id}`);
-//   };
-
-//   const RenderHeader = () => {
-
-//     return(
-//       <View style={styles.header}>
-//         <TextInput style={styles.searchbar} name="search" placeholder="Search" value={search} onChangeText={(value) => setSearch(value)} />
-//         <SortPicker sort={sort} setSort={setSort} />
-//       </View>
-//     )
-//   };
-
-//   return (
-//     <FlatList
-//       style={styles.list}
-//       data={repositoryNodes}
-//       ListHeaderComponent={<RenderHeader sort={sort} setSort={setSort} search={search} setSearch={setSearch} />}
-//       ItemSeparatorComponent={ItemSeparator}
-//       renderItem={({item}) => 
-//         <Pressable onPress={() => handlePress(item.id)}>
-//           <RepositoryItem item={item} singlePage={false} />
-//         </Pressable>
-//       }
-//       keyExtractor={item => item.id}
-//     />
-//   );
-// };
+};
 
 const RepositoryList = () => {
   const [sort, setSort] = useState('CREATED_AT DESC');

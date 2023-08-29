@@ -41,8 +41,8 @@ const RepositoryItem = ({ item, singlePage }) => {
     },
     button: {
       backgroundColor: "#0366d6",
-      textAlign: 'center',
-      padding: 10,
+      alignItems: 'center',
+      padding: 15,
       borderRadius: 5,
     },
     nameCard: {

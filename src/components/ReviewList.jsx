@@ -5,7 +5,7 @@ import ItemSeparator from "./ItemSeparator";
 import { FlatList } from "react-native";
 
 const ReviewList = () => {
-    const { data } = useQuery(GET_CURRENT_USER, {
+    const { data, refetch } = useQuery(GET_CURRENT_USER, {
         fetchPolicy: 'cache-and-network',
         variables: { includeReviews: true }
     });
@@ -15,12 +15,14 @@ const ReviewList = () => {
     const reviewNodes = data.me.reviews
         ? data.me.reviews.edges.map((edge) => edge.node)
         : [];
+    
+    const userId = data.me.id;
 
     return (
         <FlatList
             data={reviewNodes}
             ItemSeparatorComponent={ItemSeparator}
-            renderItem={({ item }) => <Review review={item} title={item.repository.fullName} />}
+            renderItem={({ item }) => <Review review={item} title={item.repository.fullName} userId={userId} refetch={refetch} />}
             keyExtractor={item => item.id}
         />
     )
