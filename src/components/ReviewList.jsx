@@ -1,22 +1,32 @@
-import { useQuery } from "@apollo/client";
-import { GET_CURRENT_USER } from "../graphql/queries";
 import Review from "./Review";
 import ItemSeparator from "./ItemSeparator";
 import { FlatList } from "react-native";
+import useCurrentUser from "../hooks/useCurrentUser";
 
 const ReviewList = () => {
-    const { data, refetch } = useQuery(GET_CURRENT_USER, {
+    // const { data, refetch, fetchMore } = useQuery(GET_CURRENT_USER, {
+    //     first: 3,
+    //     fetchPolicy: 'cache-and-network',
+    //     variables: { includeReviews: true }
+    // });
+
+    const { user, refetch, fetchMore } = useCurrentUser({
+        first: 3,
         fetchPolicy: 'cache-and-network',
-        variables: { includeReviews: true }
+        includeReviews: true,
     });
 
-    if (!data) return null;
+    if (!user) return null;
 
-    const reviewNodes = data.me.reviews
-        ? data.me.reviews.edges.map((edge) => edge.node)
+    const onEndReach = () => {
+        fetchMore();
+    };
+
+    const reviewNodes = user.reviews
+        ? user.reviews.edges.map((edge) => edge.node)
         : [];
-    
-    const userId = data.me.id;
+
+    const userId = user.id;
 
     return (
         <FlatList
@@ -24,6 +34,8 @@ const ReviewList = () => {
             ItemSeparatorComponent={ItemSeparator}
             renderItem={({ item }) => <Review review={item} title={item.repository.fullName} userId={userId} refetch={refetch} />}
             keyExtractor={item => item.id}
+            onEndReached={onEndReach}
+            onEndReachedThreshold={0.5}
         />
     )
 };

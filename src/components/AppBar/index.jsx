@@ -4,7 +4,7 @@ import AppBarTab from './AppBarTab';
 import { ScrollView } from 'react-native';
 import theme from '../../theme';
 import { useQuery } from '@apollo/client';
-import { GET_CURRENT_USER, GET_ME } from '../../graphql/queries';
+import { GET_CURRENT_USER } from '../../graphql/queries';
 import SignOut from './SignOut';
 import { useEffect, useState } from 'react';
 
@@ -51,8 +51,8 @@ const AppBar = () => {
   }
 
   return (
-    <View style={{paddingTop: 10, backgroundColor: theme.colors.headerBackground}}>
-      <ScrollView horizontal style={styles.container}>
+    <View style={styles.container}>
+      <ScrollView horizontal >
         <AppBarTab title="Repositories" link="/" />
         { user
           ? <UserTabs />

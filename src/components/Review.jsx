@@ -54,7 +54,7 @@ const Review = ({ review, title, userId, refetch }) => {
         flexDirection: 'row',
         backgroundColor: '#ffffff',
         justifyContent: 'space-around',
-        padding: 10
+        paddingBottom: 10
       },
       repoButton: {
         paddingVertical: 20,
